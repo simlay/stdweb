@@ -111,7 +111,7 @@
     unused_qualifications
 )]
 #![cfg_attr(
-    all(target_arch = "wasm32", target_os = "unknown"),
+    all(feature = "nightly", target_arch = "wasm32", target_os = "unknown"),
     feature(proc_macro)
 )]
 #![cfg_attr(feature = "nightly", feature(core_intrinsics))]
@@ -128,12 +128,6 @@ extern crate serde_json;
 #[cfg(all(test, feature = "serde"))]
 #[macro_use]
 extern crate serde_derive;
-
-#[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
-extern crate stdweb_internal_macros;
-
-#[cfg(all(target_arch = "wasm32", target_os = "unknown"))]
-pub use stdweb_internal_macros::js_export;
 
 #[cfg(feature = "futures-support")]
 extern crate futures_core;
